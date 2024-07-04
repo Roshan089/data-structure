@@ -42,6 +42,14 @@ class Stack{
         cout<<"empty"<<endl;
         return -1;
     }
+    bool isEmpty (){
+        if(top==-1)
+     return true;
+        else
+        return false;
+
+    }
+    
    
 };
 
@@ -50,8 +58,11 @@ int main(){
   Stack st (5);
   st.push(20);
   st.push(33);
+  st.pop();
+  st.pop();
+  
   int a=st.peek();
-  cout<<a;
+  cout<<st.isEmpty();
 
 
 }
