@@ -23,6 +23,9 @@ int bs(int a[], int n, int t) {
     return -1; // Return -1 if the target is not found
 }
 
+
+
+
 int main() {
     int a[] = {10, 20, 30, 40, 50, 60, 70};
     int n = 7;
