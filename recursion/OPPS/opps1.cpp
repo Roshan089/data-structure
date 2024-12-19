@@ -34,8 +34,8 @@ class Student{
 };
 
 int main(){
-   // Student s1;
-   // s1.name = "raman";
+    Student s1;
+    s1.name = "raman";
 
    // cout<<s1.name;
     Student s2("raka",1);
