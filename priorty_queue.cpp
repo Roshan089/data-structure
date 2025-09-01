@@ -18,6 +18,7 @@ int main(){
     
     for(int i=k;i<n;i++){
         if(arr[i]<q.top())
+            q.pop();
             q.push(arr[i]);
     }
     cout<<q.top();
