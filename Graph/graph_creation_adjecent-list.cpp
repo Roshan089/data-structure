@@ -7,7 +7,7 @@ using namespace std;
 // -------------------------------
 // Template Graph Class
 // -------------------------------
-template <typename T>
+template <typename T> //to declate all type at once
 class Graph {
 public:
     unordered_map<T, list<T>> edgeList;
