@@ -2,108 +2,107 @@
 #include <unordered_map>
 #include <list>
 #include <queue>
-
-
 using namespace std;
 
+// -------------------------------
+// Template Graph Class
+// -------------------------------
 template <typename T>
-
-class Graph{
-    
+class Graph {
 public:
+    unordered_map<T, list<T>> edgeList;
 
-unordered_map<T ,list<T>> edgeList;
-
-void edge(T u,T v,bool direction){
-    //direction---0-> unidirection
-    //direction -- 1 --> directed;
-    
-    if (direction){
-        edgeList[u].push_back(v);
-        
-    }
-    else{
-        edgeList[u].push_back(v);
-
-        edgeList[v].push_back(u);
-
-        
-    }
-    print();
- 
-}
-    void print(){
-        for(auto i :edgeList){
-            cout<<i.first <<"-{";
-            for(auto neg :i.second){
-                cout<<neg<<" ";
-            }
-            cout<<"}";
-              cout<<endl;
+    // Add an edge between u and v
+    // direction = 0 → Undirected
+    // direction = 1 → Directed
+    void addEdge(T u, T v, bool direction) {
+        if (direction) {
+            // Directed edge
+            edgeList[u].push_back(v);
+        } else {
+            // Undirected edge
+            edgeList[u].push_back(v);
+            edgeList[v].push_back(u);
         }
-        cout<<endl;
+        print();
     }
-    
-    
-    void bfs(T scr){
-        unordered_map<T,bool> vis;
-        
-        queue <T> q; 
-        q.push(scr);
-        vis[scr]=true;
-        
-        while(!q.empty()){
-            
-            T frontNode =q.front();
+
+    // Print adjacency list
+    void print() {
+        cout << "\nAdjacency List:\n";
+        for (auto& node : edgeList) {
+            cout << node.first << " -> { ";
+            for (auto& neighbor : node.second) {
+                cout << neighbor << " ";
+            }
+            cout << "}\n";
+        }
+        cout << endl;
+    }
+
+    // -------------------------------
+    // Breadth-First Search (BFS)
+    // -------------------------------
+    void bfs(T src) {
+        unordered_map<T, bool> visited;
+        queue<T> q;
+
+        q.push(src);
+        visited[src] = true;
+
+        cout << "\nBFS Traversal: ";
+        while (!q.empty()) {
+            T frontNode = q.front();
             q.pop();
-            cout<<frontNode<< " ";
-            
-            for(auto neg :edgeList[frontNode] ){
-                T negData=neg;
-                
-                if(!vis[negData]){
-                    q.push(negData);
-                    vis[negData]=true;
+            cout << frontNode << " ";
+
+            for (auto& neighbor : edgeList[frontNode]) {
+                if (!visited[neighbor]) {
+                    q.push(neighbor);
+                    visited[neighbor] = true;
                 }
-                
-                
-                
             }
         }
-    
-}
+        cout << endl;
+    }
 
+    // -------------------------------
+    // Depth-First Search (DFS)
+    // -------------------------------
+    void dfs(T src, unordered_map<T, bool>& visited) {
+        visited[src] = true;
+        cout << src << " ";
+
+        for (auto& neighbor : edgeList[src]) {
+            if (!visited[neighbor]) {
+                dfs(neighbor, visited);
+            }
+        }
+    }
 };
 
-
-
-
-
-
-
+// -------------------------------
+// Main Function
+// -------------------------------
 int main() {
-    
     Graph<char> g;
-    
-    // g.edge(2,3,1);
-    //     g.edge(3,4,1);
+    unordered_map<char, bool> visited;
 
-    // g.edge(4,5,0);
+    g.addEdge('a', 'b', 1);
+    g.addEdge('a', 'c', 1);
+    g.addEdge('c', 'd', 1);
+    g.addEdge('c', 'e', 1);
+    g.addEdge('d', 'e', 1);
+    g.addEdge('e', 'f', 1);
 
+    cout << "\nDFS Traversal: ";
+    g.dfs('a', visited);
 
-    // g.edge(5,8,1);
-    
-    
-    
-        g.edge('a','b',1);
-        g.edge('b','f',1);
+    // Uncomment to test BFS
+    // g.bfs('a');
 
-    g.edge('f','q',0);
-
-
-    g.edge('q','l',1);
-    g.bfs('a');
+    // Uncomment to see adjacency list
     // g.print();
 
-return 0;    
+    return 0;
 }
