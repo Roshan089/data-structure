@@ -94,7 +94,7 @@ g.insert(4, 5, 0);
      stack<int> st;
      
      g.topoBfs(5);
-     
+     // 
     //  g.topoDfs(1,vis ,st);
     //  while(!st.empty()){
     //      cout<<st.top();
