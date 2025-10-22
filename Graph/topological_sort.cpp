@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <list>
 #include <map>
+#include <queue>
 
 #include <stack>
 
@@ -42,24 +43,63 @@ class Graph{
      st.push(src);
  }
  
+ void topoBfs(int  n){
+     map<int ,int> inorder;
+     queue<int> q;
+     
+     for(auto i:adjlist){
+         for(auto neg:i.second){
+             inorder[neg]++;
+         }
+     }
+     
+     for(int i=0;i<=n;i++){
+         if(inorder[i]==0){
+             q.push(i);
+         }
+     }
+     while(!q.empty()){
+         
+         int front=q.front();
+         cout<<front<<", ";
+         q.pop();
+         for(auto cli: adjlist[front]){
+             inorder[cli]--;
+         
+             if(inorder[cli]==0)
+             q.push(cli);
+             
+         }
+         
+         
+         
+         
+         
+     }
+ }
+ 
 };
 int main(){
     Graph g;
-    g.insert(1,3,0);
-        g.insert(3,5,0);
-    g.insert(3,2,1);
+    g.insert(0, 1, 0);
 
-    g.insert(8,9,1);
+g.insert(1, 2, 0);
+g.insert(2, 3, 0);
+g.insert(3, 4, 0);
+g.insert(4, 5, 0);
+
     
     
      map<int ,bool> vis;
      stack<int> st;
      
-     g.topoDfs(1,vis ,st);
-     while(!st.empty()){
-         cout<<st.top();
-         st.pop();
-     }
+     g.topoBfs(5);
+     
+    //  g.topoDfs(1,vis ,st);
+    //  while(!st.empty()){
+    //      cout<<st.top();
+    //      st.pop();
+    //  }
  //   g.print();
 
     
