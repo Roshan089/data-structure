@@ -26,7 +26,6 @@ class Graph{
          cout<<"}"<<endl;
      }
  }
- 
  void topoDfs(int src, map<int ,bool>& vis, stack<int>& st){
      vis[src]=true;
      
@@ -45,8 +44,7 @@ class Graph{
          for(auto neg:i.second){
              inorder[neg]++;
          }
-     }
-     
+     }     
      for(int i=0;i<=n;i++){
          if(inorder[i]==0){
              q.push(i);
@@ -117,8 +115,5 @@ g.insert(2, 3, 1);
     //      cout<<st.top();
     //      st.pop();
     //  }
- //   g.print();
-
-    
-    
+ //   g.print();    
 }
