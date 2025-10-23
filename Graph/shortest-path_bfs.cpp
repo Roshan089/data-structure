@@ -3,13 +3,8 @@
 #include <list>
 #include <map>
 #include <queue>
-
 #include <stack>
-
-
-
 using namespace std;
-
 class Graph{
     public:
  unordered_map<int ,list<int>> adjlist;
@@ -41,8 +36,7 @@ class Graph{
          }
      }
      st.push(src);
- }
- 
+ } 
  void topoBfs(int  n){
      map<int ,int> inorder;
      queue<int> q;
@@ -100,8 +94,7 @@ class Graph{
           for(auto i:ans){
               cout<<i<<",";
           }  
- }
- 
+ } 
 };
 int main(){
     Graph g;
@@ -112,11 +105,8 @@ g.insert(0, 6, 1);
 g.insert(6, 3, 1);
 g.insert(0, 1, 1);
 g.insert(1, 2, 1);
-g.insert(2, 3, 1);
-
-    
-    
-     map<int ,bool> vis;
+g.insert(2, 3, 1);    
+    map<int ,bool> vis;
      stack<int> st;
      
     //  g.topoBfs(5);
