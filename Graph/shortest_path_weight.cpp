@@ -3,14 +3,9 @@
 #include <stack>
 #include <vector>
 #include <climits> 
-
-
-
 #include <utility>   
 #include <iostream>  
 using namespace std;
-
-
 class Graph{
     public:
     unordered_map <int, list<pair<int,int>>> adj;
@@ -45,10 +40,7 @@ class Graph{
                 }
             }
             
-            st.push(src);
-            
-            
-            
+            st.push(src);       
         }
         
         void shortestpath(stack<int> st,int n ){
@@ -73,15 +65,13 @@ class Graph{
               int wt=neg.second;
               int negNode=neg.first;
                    if(ans[src]+wt<ans[negNode])
-                   ans[negNode]=ans[src]+wt;
-                
+                   ans[negNode]=ans[src]+wt;                
             }
         
           }
           for(auto i:ans){
             cout<<i<<",";
-          }
-        
+          }       
     }
 };
 int main(){
@@ -100,13 +90,4 @@ int main(){
     //     st.pop();
     // }
     g.shortestpath(st,4);
-    
-
-    
-    
-    
-    
-    
-    
-
 }
