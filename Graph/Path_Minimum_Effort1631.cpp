@@ -11,7 +11,7 @@ public:
     int minimumEffortPath(vector<vector<int>>& heights) {
       priority_queue< pair<int, pair<int, int>>,
                 vector<pair<int, pair<int, int>>>,
-                greater<pair<int, pair<int, int>>> > mini;
+                greater<pair<int, pair<int, int>>> > mini;    //initilize-min-heap
 
         int row = heights.size();
         int col = heights[0].size();
@@ -55,5 +55,6 @@ public:
             }
         }
         return diff[desX][desY];
+        
     }
 };
