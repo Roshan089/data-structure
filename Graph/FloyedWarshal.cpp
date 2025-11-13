@@ -63,9 +63,7 @@ class  Graph{
               cout<< dist[i][j]<<" ";
               
           }
-          cout<<endl;
-         
-          
+          cout<<endl;    
       }
       
   }
@@ -77,8 +75,7 @@ int main(){
     Graph g;
      vector<int> dist(6,INT_MAX);
      
-     
-     
+       
      g.insert(0, 1, 3, 1);
 g.insert(1, 0, 2, 1);
 g.insert(0, 3, 5, 1);
@@ -86,8 +83,6 @@ g.insert(1, 3, 4, 1);
 g.insert(3, 2, 2, 1);
 g.insert(2, 1, 1, 1);
 g.floyesWarshal(4);
-
-
 
 // g.insert('a', 'b', -1, 1);
 // g.insert('b', 'e', 2, 1);
